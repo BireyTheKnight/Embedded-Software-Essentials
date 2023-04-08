@@ -9,16 +9,17 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.c
+ * @brief This file contains implementations of array analyzing functions
  *
- * <Add Extended Description Here>
+ *  Functions within this source file can analyze an array of unsigned
+ *  char data items and report analytics on the maximum, minimum, mean,
+ *  and median of the data set
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Birey Kadıoğlu
+ * @date 08/04/2023
  *
  */
-
 
 
 #include <stdio.h>
@@ -35,9 +36,46 @@ void main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
-  /* Other Variable Declarations Go Here */
+  /* Other Variable Declarations Go Here */ 
+
+
   /* Statistics and Printing Functions Go Here */
 
+
+}  
+ 
+void sort_array(unsigned char *array, unsigned int array_lenght){
+  
 }
 
-/* Add other Implementation File Code Here */
+
+void print_array(unsigned char *array, unsigned int array_lenght){
+  
+}
+  
+
+unsigned char find_median(unsigned char *array, unsigned int array_lenght){
+  
+}
+
+
+unsigned char find_mean(unsigned char *array, unsigned int array_lenght){
+  
+}
+
+
+unsigned char find_maximum(unsigned char *array, unsigned int array_lenght){
+  
+}
+
+  
+unsigned char find_minimum(unsigned char *array, unsigned int array_lenght){
+  
+}
+
+
+void print_statistics(unsigned char *array, unsigned int array_lenght){
+  
+}
+
+

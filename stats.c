@@ -98,6 +98,8 @@ void print_array(unsigned char *array, unsigned int array_lenght){
 
 unsigned char find_median(unsigned char *array, unsigned int array_lenght){
   
+  sort_array(array, array_lenght);
+
   unsigned char median = 0;
 
   if (array_lenght % 2 == 0){

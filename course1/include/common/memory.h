@@ -1,3 +1,26 @@
+/******************************************************************************
+ * Copyright (C) 2017 by Alex Fosdick - University of Colorado
+ *
+ * Redistribution, modification or use of this software in source or binary 
+ * forms is permitted as long as the files maintain this copyright. Users are 
+ * permitted to modify this and use it to learn about the field of embedded
+ * software. Alex Fosdick and the University of Colorado are not liable for any
+ * misuse of this material. 
+ *
+ *****************************************************************************/
+
+/**
+ * @file memory.h 
+ * @brief Abstraction of memory manipulation operations
+ *
+ * This header file provides an abstraction of manipulating memory via
+ * function calls
+ *
+ * @author Birey Kadıoğlu
+ * @date 02/05/2023
+ *
+ */
+
 #ifndef __MEMORY_H__
 #define __MEMORY_H__
 
@@ -68,5 +91,96 @@ void set_all(char * ptr, char value, unsigned int size);
  * @return void.
  */
 void clear_all(char * ptr, unsigned int size);
+
+/**
+ * @brief Moves data from source to destination
+ *
+ * Takes two byte pointers and a length of bytes to move from the
+ * source location to the destination
+ *
+ * @param src Pointer to the source
+ * @param dst Pointer to the destination
+ * @param length Data length in bytes to be moved
+ *
+ * @return Pointer to the destination.
+ */
+uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @brief Copies data from source to destination
+ *
+ * Takes two byte pointers and a length of bytes to copy from the
+ * source location to the destination
+ *
+ * @param src Pointer to the source
+ * @param dst Pointer to the destination
+ * @param length Data length in bytes to be moved
+ *
+ * @return Pointer to the destination.
+ */
+uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @brief Sets all locations of a memory source to a given value
+ *
+ * Takes a pointer to a source memory location, a length in bytes and
+ * set all locations of that memory to a given value
+ *
+ * @param src Pointer to the source
+ * @param length Length in bytes to be set
+ * @param value Value of memory locations to be set to
+ *
+ * @return Pointer to the source.
+ */
+uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value);
+
+/**
+ * @brief Sets all locations of a memory source to zero
+ *
+ * Takes a pointer to a source memory location, a length in bytes and
+ * set all locations of that memory to zero
+ *
+ * @param src Pointer to the source
+ * @param length Length in bytes to be set
+ *
+ * @return Pointer to the source.
+ */
+uint8_t * my_memzero(uint8_t * src, size_t length);
+
+/**
+ * @brief Reverses the order of bytes of a memory source
+ *
+ * Takes a pointer to a memory location and a length in bytes and 
+ * reverse the order of all of the bytes
+ *
+ * @param src Pointer to the source
+ * @param length Length in bytes to be reversed
+ *
+ * @return Pointer to the source.
+ */
+uint8_t * my_reverse(uint8_t * src, size_t length);
+
+/**
+ * @brief Allocates number of words in dynamic memory
+ *
+ * Takes number of words to allocate in dynamic memory
+ *
+ * @param length Length in words to be allocated
+ *
+ * @return Pointer to the memory (Null Pointer if not successful).
+ */
+int32_t * reserve_words(size_t length);
+
+/**
+ * @brief Frees dynamic memory
+ *
+ * Free a dynamic memory allocation by providing the pointer src to 
+ * the function
+ *
+ * @param src Pointer to the source
+ *
+ * @return void.
+ */
+void free_words(int32_t * src);
 
 #endif /* __MEMORY_H__ */

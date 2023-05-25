@@ -22,8 +22,13 @@
  */
 
 
+#include <stdint.h>
+#include <stddef.h>
+#include <stdlib.h>
 #include "memory.h"
 
+
+/* Pre-existing code provided by Alex Fosdick - University of Colorado */      
 
 void set_value(char * ptr, unsigned int index, char value){
   ptr[index] = value;
@@ -48,31 +53,103 @@ void clear_all(char * ptr, unsigned int size){
   set_all(ptr, 0, size);
 }
 
-uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);{
+/***********************************************************************/     
+
+
+
+uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length){
+
+  uint8_t *temp = malloc(length * sizeof(uint8_t));
+
+  if (temp == NULL){
+  	  
+    return NULL;
+
+  }
+
+  my_memcopy(src, temp, length);
+  my_memcopy(temp, dst, length);
+
+  free(temp);
+
+  return dst;
 
 }
 
-uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length);{
+uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length){
+	
+  for (size_t i = 0; i < length; i++){
+
+    *(dst+i) = *(src+i);
+
+  }
+
+  return dst;
 
 }
 
-uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value);{
+uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value){
+
+  for (uint8_t i = 0; i < length; i++){
+  
+    *(src+i) = value;
+	  
+  }
+
+  return src;
+	
+}
+
+uint8_t * my_memzero(uint8_t * src, size_t length){
+
+  for (uint8_t i = 0; i < length; i++){
+
+    *(src+i) = 0;
+
+  }
+  
+  return src;
+
+	
+}
+
+uint8_t * my_reverse(uint8_t * src, size_t length){
+
+  uint8_t *temp = malloc(length * sizeof(uint8_t));
+
+  my_memcopy(src, temp, length);
+
+  for (size_t i = 0; i < length; i++){
+
+    *(src+i) = *(temp+length-1-i);
+  
+  }
+
+  free(temp);
+
+  return src;
 
 }
 
-uint8_t * my_memzero(uint8_t * src, size_t length);{
+int32_t * reserve_words(size_t length){
 
+  int32_t *ptr = (int32_t *)malloc(length * sizeof(int32_t));
+
+  if (ptr == NULL){
+
+    return NULL;
+
+  }
+  else{
+
+  return ptr;  
+
+  }
 }
 
-uint8_t * my_reverse(uint8_t * src, size_t length);{
+void free_words(int32_t * src){
 
-}
-
-int32_t * reserve_words(size_t length);{
-
-}
-
-void free_words(int32_t * src);{
-
+  free(src);
+	
 }
 

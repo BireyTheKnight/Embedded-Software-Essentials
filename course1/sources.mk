@@ -12,23 +12,29 @@
 
 ifeq ($(PLATFORM), MSP432)
 
-	SOURCES = main.c \
-		  memory.c \
-		  interrupts_msp432p401r_gcc.c \
-		  startup_msp432p401r_gcc.c \
-		  system_msp432p401r.c
+	SOURCES = src/main.c \
+		  src/course1.c \
+		  src/memory.c \
+		  src/data.c \
+		  src/stats.c \
+		  src/interrupts_msp432p401r_gcc.c \
+		  src/startup_msp432p401r_gcc.c \
+		  src/system_msp432p401r.c
 
-	INCLUDES = /home/ecee/c1m2/include/common \
-		   /home/ecee/c1m2/include/CMSIS \
-		   /home/ecee/c1m2/include/msp432 
+	INCLUDES = include/common \
+		   include/CMSIS \
+		   include/msp432 
 
 else
 
         PLATFORM = HOST
 
-	SOURCES = main.c \
-		  memory.c
+	SOURCES = src/main.c \
+		  src/course1.c \
+		  src/memory.c \
+		  src/data.c \
+		  src/stats.c 
 
-        INCLUDES = /home/ecee/c1m2/include/common
+        INCLUDES = include/common
 	                  
 endif

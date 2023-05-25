@@ -35,13 +35,15 @@
 include sources.mk
 
 
-TARGET_NAME = c1m2
+TARGET_NAME = c1_final
 TARGET = $(TARGET_NAME).out
 
+COURSE = COURSE1
+VERBOSE = TRUE
 
 # Architectures Specific Flags
 ifeq ($(PLATFORM), MSP432)
-	LINKER_FILE = ../msp432p401r.lds
+	LINKER_FILE = msp432p401r.lds
 	CPU = cortex-m4
 	ARCH = armv7e-m
 	SPECS = nosys.specs
@@ -56,7 +58,7 @@ ifeq ($(PLATFORM), MSP432)
 	LD = arm-none-eabi-ld
 	LDFLAGS = -Wl,-Map=$(TARGET_NAME).map -T $(LINKER_FILE)
 	CFLAGS = -mcpu=$(CPU) -march=$(ARCH) --specs=$(SPECS) -mthumb \
-		 -mfloat-abi=$(FLOAT_ABI) -mfpu=$(FPU) -Wall -Werror\
+		 -mfloat-abi=$(FLOAT_ABI) -mfpu=$(FPU) -Wall \
 		 $(addprefix -I, $(INCLUDES)) -g -O0 -std=c99 
 	CPPFLAGS = -MD
 	PLATFORM_TARGET = -DMSP432
@@ -64,9 +66,19 @@ ifeq ($(PLATFORM), MSP432)
 else ifeq ($(PLATFORM), HOST)
 	CC = gcc
 	LDFLAGS = -Wl,-Map=$(TARGET_NAME).map
-	CFLAGS = $(addprefix -I, $(INCLUDES)) -Wall -Werror -g -O0 -std=c99
+	CFLAGS = $(addprefix -I, $(INCLUDES)) -Wall -g -O0 -std=c99
 	CPPFLAGS = -MD
 	PLATFORM_TARGET =-DHOST
+endif
+
+
+ifeq ($(COURSE), COURSE1)
+	CFLAGS += -DCOURSE1
+endif
+
+
+ifeq ($(VERBOSE), TRUE)
+	CFLAGS += -DVERBOSE
 endif
 
 
@@ -117,7 +129,8 @@ compile-all: $(OBJS)
 
 .PHONY: clean
 clean:
-	rm -f *.o *.i *.asm *.d *.out *.map  
+	rm -f *.o *.i *.asm *.d *.out *.map \
+	src/*.o src/*.i src/*.asm src/*.d 	
 
 
 

@@ -21,11 +21,13 @@
  */
 
 
-#include <stdio.h>
+/* #include <stdio.h> */
 #include "stats.h"
+#include "../include/common/platform.h"
 
 #define SIZE (40)
 
+/************************************************************************
 void main() {
 
   unsigned char test[SIZE] = { 34, 201, 190, 154,   8, 194,   2,   6,
@@ -50,7 +52,7 @@ void main() {
   print_statistics(test, SIZE);
 
 }  
-
+*******************************************************************/
 
 void sort_array(unsigned char *array, unsigned int array_length){
   
@@ -80,17 +82,17 @@ void sort_array(unsigned char *array, unsigned int array_length){
 
 void print_array(unsigned char *array, unsigned int array_length){
   
-  printf("The Array:\n");
+  PRINTF("The Array:\n");
 
   int i;
 
   for (i = 0; i < array_length; i++){
 
-    printf("%d ", *(array+i));
+    PRINTF("%d ", *(array+i));
 
   }
   
-  printf("\n\n");
+  PRINTF("\n\n");
 
 }
   
@@ -183,10 +185,10 @@ unsigned char find_minimum(unsigned char *array, unsigned int array_length){
  
 void print_statistics(unsigned char *array, unsigned int array_length){
   
-  printf("Statistics Of The Array:\n");
-  printf("Mean = %d\n", find_mean(array, array_length));
-  printf("Median = %d\n", find_median(array, array_length));
-  printf("Maximum = %d\n", find_maximum(array, array_length));
-  printf("Minimum = %d\n", find_minimum(array, array_length));
+  PRINTF("Statistics Of The Array:\n");
+  PRINTF("Mean = %d\n", find_mean(array, array_length));
+  PRINTF("Median = %d\n", find_median(array, array_length));
+  PRINTF("Maximum = %d\n", find_maximum(array, array_length));
+  PRINTF("Minimum = %d\n", find_minimum(array, array_length));
 
 }

@@ -18,11 +18,11 @@
  */
 
 #include <stdint.h>
-#include "course1.h"
-#include "platform.h"
-#include "memory.h"
-#include "data.h"
-#include "stats.h"
+#include "../include/common/course1.h"
+#include "../include/common/platform.h"
+#include "../include/common/memory.h"
+#include "../include/common/data.h"
+#include "../include/common/stats.h"
 
 int8_t test_data1() {
   uint8_t * ptr;
@@ -38,7 +38,7 @@ int8_t test_data1() {
     return TEST_ERROR;
   }
 
-  digits = my_itoa( num, ptr, BASE_16);   
+  digits = my_itoa( num, ptr, BASE_16);
   value = my_atoi( ptr, digits, BASE_16);
   #ifdef VERBOSE
   PRINTF("  Initial number: %d\n", num);

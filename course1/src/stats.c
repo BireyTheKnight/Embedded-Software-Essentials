@@ -23,7 +23,7 @@
 
 /* #include <stdio.h> */
 #include "stats.h"
-#include "../include/common/platform.h"
+#include "platform.h"
 
 #define SIZE (40)
 

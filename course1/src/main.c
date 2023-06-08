@@ -1,4 +1,4 @@
-#include "../include/common/course1.h"
+#include "course1.h"
 
 void main(void){
 

@@ -7,14 +7,12 @@ Only 2 courses out of 6 within the specialization are available for now and the 
 course1 contains the code for the Introduction to Embedded Systems Software and Development Environments final project which is titled Expanded Build System and Memory
 
 The files withing the project which I am the author of:
--Makefile
--sources.mk
--main.c
--memory.c
--memory.h
--data.c
--data.h
--stats.c
--stats.h
-
--
+- Makefile
+- sources.mk
+- main.c
+- memory.c
+- memory.h
+- data.c
+- data.h
+- stats.c
+- stats.h
